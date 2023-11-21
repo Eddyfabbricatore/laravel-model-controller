@@ -10,8 +10,6 @@
     @vite('resources/js/app.js')
 </head>
 <body>
-    @include('partials.header')
-
     <div class="container my-5">
         @yield('content')
     </div>

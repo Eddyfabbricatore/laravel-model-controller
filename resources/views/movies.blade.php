@@ -1,7 +1,7 @@
 @extends('layouts.main')
 
 @section('content')
-<h1 class="mb-3">I miei film</h1>
+<h1 class="mb-3">{{ $title }}</h1>
 
 <div class="row d-flex flex-wrap">
     @foreach ($movies as $movie)
@@ -14,19 +14,9 @@
                 <div class="card-body">
                   <h5 class="card-title">Titolo: {{ $movie->title }}</h5>
 
-                  <p class="card-text">Titolo originale: {{ $movie->original_title }}</p>
-
-                  @if($movie->nationality == 'american')
-                    <p class="card-text">Nazionalità: Americana</p>
-                  @elseif($movie->nationality == 'american/british')
-                    <p class="card-text">Nazionalità: Americana/Inglese</p>
-                  @endif
-
-                  <p class="card-text">Data di uscita: {{ $movie->date }}</p>
-
                   <p class="card-text">Voto: {{ $movie->vote }}</p>
 
-                  <a href="#" class="btn btn-primary">Go somewhere</a>
+                  <a href="{{ route('moviesDetails', ['id' => $movie->id]) }}" class="btn btn-primary">Info</a>
                 </div>
               </div>
         </div>

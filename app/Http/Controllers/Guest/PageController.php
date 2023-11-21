@@ -8,13 +8,17 @@ use App\Models\Movie;
 
 class PageController extends Controller
 {
+
     public function index(){
-        return view('home');
+        $title = 'I film più votati';
+        $movies = Movie::orderBy('vote', 'desc')->get();
+
+        return view('movies', compact('movies', 'title'));
     }
 
-    public function movies(){
-        $movies = Movie::all();
+    public function moviesDetails($id){
+        $movie = Movie::find($id);
 
-        return view('movies', compact('movies'));
+        return view('movie_details', compact('movie'));
     }
 }
